@@ -49,6 +49,12 @@ fn low_mask(num_bits: u8) -> u64 {
     }
 }
 
+/// Number of bytes taken by a `VInt`.
+pub(crate) fn vint_len(val: u64) -> u64 {
+    let num_bits = (64 - val.leading_zeros()).max(1) as u64;
+    num_bits.div_ceil(7)
+}
+
 #[derive(Clone, Copy)]
 struct BlockMeta {
     start_byte_offset: u64,
