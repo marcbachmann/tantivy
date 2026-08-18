@@ -157,7 +157,6 @@ pub(crate) fn get_range_via_blocks(
         row += take;
         out_offset += take;
     }
-    // Trailing partial block (and everything past it).
     for (i, o) in output[out_offset..].iter_mut().enumerate() {
         *o = get_val((row + i) as u32);
     }
